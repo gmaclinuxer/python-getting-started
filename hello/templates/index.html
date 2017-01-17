@@ -18,6 +18,9 @@
   <div class="alert alert-info text-center" role="alert">
     To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-python" class="alert-link">Getting Started with Python on Heroku</a> tutorial.
   </div>
+  <wb:share-button type="button" size="middle"> </wb:share-button>
+  <wb:login-button type="3,2" onlogin="login" onlogout="logout"></wb:login-button>
+  <div id="wb_connect_btn" ></div>
   <hr>
   <div class="row">
     <div class="col-md-6">
@@ -55,4 +58,20 @@
     Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
   </div>
 </div>
+  <script>
+WB2.anyWhere(function (W) {
+    W.widget.connectButton({
+        id: "wb_connect_btn",
+        type: '3,2',
+        callback: {
+            login: function (o) { //登录后的回调函数
+                alert("login: " + o.screen_name)
+            },
+            logout: function () { //退出后的回调函数
+                alert('logout');
+            }
+        }
+    });
+});
+  </script>
 {% endblock %}
